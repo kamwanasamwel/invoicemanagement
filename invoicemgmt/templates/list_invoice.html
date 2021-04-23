@@ -13,7 +13,7 @@
   </head>
   <body>
     {{title}} <br />
-    {% csrf_token %} {{form}}
+
     <br />
     <form method="POST" action="">
       {% csrf_token %} {{form|crispy}}
