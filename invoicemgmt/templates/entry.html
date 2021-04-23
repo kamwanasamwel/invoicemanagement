@@ -1,12 +1,82 @@
+{% load static %} {% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>{{title}}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet" />
   </head>
   <body>
-    <form method="POST" action="">
-      {% csrf_token %} {{form}}
-      <input type="submit" value="Save" />
-    </form>
+    <div class="myForm">
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                {{ form.invoice_date|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6">
+                {{ form.invoice_number|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                {{ form.name|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6">
+                {{ form.phone_number|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                {{ form.line_one|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_one_quantity|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_one_unit_price|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_one_total_price|as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                {{ form.line_two|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_two_quantity|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_two_unit_price|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-2">
+                {{ form.line_two_total_price|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                {{ form.invoice_type|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-12">
+                {{ form.total|as_crispy_field }}
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+            <!-- <input type="submit" value='Submit'/>   -->
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- End myform -->
   </body>
 </html>

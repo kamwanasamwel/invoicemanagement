@@ -1,0 +1,13 @@
+body {
+	/* background-color: #eb4634; */
+}
+
+.myClass{
+	text-align: center;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.myForm{
+    margin: 30px;
+}
