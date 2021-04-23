@@ -1,19 +1,44 @@
-{% load static %}
+{% load static %} {% load crispy_forms_tags %} {% include 'navbar.html' %}
+<br />
 <!DOCTYPE html>
 <html>
   <head>
     <title>List of Invoices</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet" />
   </head>
   <body>
     {{title}} <br />
+    {% csrf_token %} {{form}}
     <br />
-    {% for instance in queryset %} {{instance.invoice_date}} {{instance.name}},
-    {{instance.invoice_number}}, {{instance.invoice_type}},
-    {{instance.line_one_total_price}}
+    <form method="POST" action="">
+      {% csrf_token %} {{form|crispy}}
+      <input type="submit" value="Search" />
+    </form>
     <br />
-    ------------------------------- <br />
-
-    {% endfor %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>COUNT</th>
+          <th>DATE</th>
+          <th>CUSTOMER NAME</th>
+          <th>INVOICE NUMBER</th>
+          <th>AMOUNT</th>
+        </tr>
+      </thead>
+      {% for instance in queryset %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{instance.invoice_date}}</td>
+        <td>{{instance.name}}</td>
+        <td>{{instance.invoice_number}}</td>
+        <td>{{instance.total}}</td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>

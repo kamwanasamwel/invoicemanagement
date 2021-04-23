@@ -13,3 +13,9 @@ class InvoiceForm(forms.ModelForm):
                   'line_five', 'line_five_quantity', 'line_five_unit_price', 'line_five_total_price',
                   'total', 'paid', 'invoice_type'
                   ]
+
+
+class InvoiceSearchForm(forms.ModelForm):
+    class Meta:
+        model = Invoice
+        fields = ['invoice_number', 'name']
