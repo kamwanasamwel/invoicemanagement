@@ -75,3 +75,6 @@ class Invoice(models.Model):
 
     def __unicode__(self):
         return self.invoice_number
+
+    def __str__(self):
+        return self.name
